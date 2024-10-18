@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Chúc Mừng Ngày 20/10</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f9f3f3;
+        color: #333;
+        text-align: center;
+        margin: 0;
+        padding: 50px;
+        animation: fadeIn 1s;
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+
+      .container {
+        background-color: #fff;
+        border-radius: 10px;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+        transition: transform 0.3s;
+      }
+
+      .container:hover {
+        transform: scale(1.02);
+      }
+
+      h1 {
+        color: #ff6f61;
+        margin-bottom: 20px;
+      }
+
+      img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 10px;
+        margin-top: 20px;
+      }
+
+      button {
+        background-color: #ff6f61;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        padding: 10px 20px;
+        cursor: pointer;
+        font-size: 16px;
+        margin-top: 20px;
+        transition: background-color 0.3s;
+      }
+
+      button:hover {
+        background-color: #ff3d3d;
+      }
+
+      .hidden {
+        display: none;
+      }
+
+      .message {
+        font-size: 18px;
+        margin-top: 20px;
+        color: #555;
+      }
+
+      .crush-name {
+        font-weight: bold;
+        color: #ff69b4; /* Màu hồng */
+      }
+
+      #text-container {
+        font-size: 20px;
+        text-align: center;
+        margin-top: 20px; /* Khoảng cách từ trên xuống */
+        color: #333;
+      }
+
+      .centered-button {
+        display: block;
+        margin: 20px auto; /* Để căn giữa */
+        font-size: 40px;
+        padding: 20px 40px;
+        background-color: #ff6666;
+        color: white;
+        border: none;
+        border-radius: 10px;
+        cursor: pointer;
+        animation: blink 1s infinite alternate;
+        box-shadow: 0 0 20px rgba(255, 102, 102, 0.7);
+      }
+
+      /* Hiệu ứng chớp chớp */
+      @keyframes blink {
+        0% {
+          opacity: 1;
+        }
+        100% {
+          opacity: 0.6;
+        }
+      }
+
+      /* CSS cho khung thông báo */
+      .popup2 {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 80%;
+        max-width: 600px;
+        background-color: white;
+        border-radius: 10px;
+        box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+        z-index: 1000;
+        padding: 20px;
+      }
+
+      /* Ẩn khung khi không cần thiết */
+      .hidden {
+        display: none;
+      }
+
+      /* CSS cho nội dung bên trong khung */
+      .popup2-content {
+        text-align: center;
+      }
+
+      /* Nút đóng */
+      .close-button {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        background-color: #ff6666;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        padding: 5px 10px;
+      }
+
+      /* Hiệu ứng trái tim bay lên */
+      .heart {
+        position: absolute;
+        top: 100%; /* Bắt đầu từ dưới cùng của màn hình */
+        left: 50%;
+        transform: translateX(-50%);
+        font-size: 24px;
+        animation: flyUp 2s forwards;
+      }
+
+      @keyframes flyUp {
+        0% {
+          transform: translate(-50%, 0) scale(1);
+          opacity: 1;
+        }
+        100% {
+          transform: translate(-50%, -100vh) scale(1.5);
+          opacity: 0;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Chúc Mừng Ngày Quốc Tế Phụ Nữ 20/10!</h1>
+      <img src="mk.jpg" alt="Hình ảnh dễ thương" style="width: 300px" />
+      <p>
+        Gửi đến bé iu của Nhuy
+        <span class="crush-name" id="crushName"> Minh Khuê</span>
+      </p>
+      <p>Hmmm...</p>
+      <button class="centered-button" onclick="showPopup()">
+        Bấm vô đây đi bé
+      </button>
+
+      <!-- Khung thông báo -->
+      <div id="popup2" class="popup2 hidden">
+        <div class="popup2-content">
+          <button class="close-button" onclick="hidePopup()">Đóng</button>
+          <h1 style="color: #4b2c20">Nay chắc bé mệt lắm ha</h1>
+          <div id="text-container"></div>
+          <button onclick="createHearts()">Iu nè❤️</button>
+        </div>
+      </div>
+      <script>
+        // Hiển thị khung thông báo
+        function showPopup() {
+          document.getElementById("popup2").classList.remove("hidden");
+          typeText(); // Bắt đầu hiển thị chữ
+        }
+
+        // Ẩn khung thông báo
+        function hidePopup() {
+          document.getElementById("popup2").classList.add("hidden");
+        }
+
+        // Tạo trái tim bay lên
+        function createHearts() {
+          for (let i = 0; i < 10; i++) {
+            createHeart();
+          }
+        }
+
+        function createHeart() {
+          const heart = document.createElement("div");
+          heart.classList.add("heart");
+          heart.innerHTML = "❤️";
+          document.body.appendChild(heart);
+
+          // Đặt vị trí ngẫu nhiên cho trái tim
+          heart.style.left = Math.random() * window.innerWidth + "px";
+
+          // Xoá trái tim sau khi hiệu ứng kết thúc
+          heart.addEventListener("animationend", () => {
+            heart.remove();
+          });
+        }
+
+        const textContainer = document.getElementById("text-container");
+        const username = "<?php echo $username; ?>";
+        const text =
+          "Hmm...Nay 20/10 nè chúc bé iu của t luôn vui vẻ, hạnh phúc, gặp được nhiều may mắn trong học tập và cuộc sống nè, thi, kiểm tra đạt được điểm cao, càng ngày càng iu t nhìu hơn nè! Tóm lại chúc tất cả những điều tốt đẹp nhất luôn đến với Khue nhaa!! \n Love you:3";
+        let index = 0;
+        const typingSpeed = 90; // Tốc độ gõ (mili giây)
+
+        function typeText() {
+          if (index < text.length) {
+            textContainer.innerHTML += text.charAt(index);
+            index++;
+            setTimeout(typeText, typingSpeed); // Gọi lại hàm sau một khoảng thời gian
+          } else {
+            // Không làm gì sau khi kết thúc, giữ lại nội dung
+          }
+        }
+      </script>
+    </div>
+  </body>
+</html>
